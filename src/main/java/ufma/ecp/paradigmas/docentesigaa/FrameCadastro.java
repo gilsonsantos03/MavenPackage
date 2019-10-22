@@ -31,7 +31,7 @@ public class FrameCadastro extends JFrame{
 	private void btnCadastrarActionPerformed() {
 		JOptionPane.showMessageDialog(null, 
 				"Cadastro realizado com sucesso!",
-				"Cadastro de contatos",
+				"Cadastro de Docentes",
 				JOptionPane.PLAIN_MESSAGE
 				);
 	}
@@ -39,7 +39,7 @@ public class FrameCadastro extends JFrame{
 	public FrameCadastro() {
 		//fazendo a configuracao da janela
 		setTitle("Cadastro de Docentes");
-		setSize(300, 200);
+		setSize(400, 300);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); //centraliza o JFrame
