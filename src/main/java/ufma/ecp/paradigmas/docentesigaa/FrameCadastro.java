@@ -39,7 +39,7 @@ public class FrameCadastro extends JFrame{
 	public FrameCadastro() {
 		//fazendo a configuracao da janela
 		setTitle("Cadastro de Docentes");
-		setSize(600, 300);
+		setSize(300,200);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); //centraliza o JFrame
@@ -47,27 +47,27 @@ public class FrameCadastro extends JFrame{
 		//instanciando ...
 		lblProfessor = new JLabel("Prof: ");
 		txtProfessor = new JTextField(15);
+		
 		lblCadeira = new JLabel("Cadeira: ");
 		txtCadeira = new JTextField(15);
+		
 		lblId = new JLabel("Id: ");
 		txtId = new JTextField(15);
+		
 		btnCadastrar = new JButton("Cadastro");
 		btnLimpar = new JButton("Limpar");
 		btnSair = new JButton("Sair");
+		
 		jpnProfessor = new JPanel();
-		jpnProfessor.setLayout(new FlowLayout());
 		jpnCadeira = new JPanel();
-		jpnCadeira.setLayout(new FlowLayout());
 		jpnId = new JPanel();
-		jpnId.setLayout(new FlowLayout());
 		jpnBotoes = new JPanel();
-		jpnBotoes.setLayout(new FlowLayout());
 		
 		//adicionando os componentes
 		jpnProfessor.add(lblProfessor);
 		jpnProfessor.add(txtProfessor);
 		jpnCadeira.add(lblCadeira);
-		jpnCadeira.add(lblCadeira);
+		jpnCadeira.add(txtCadeira);
 		jpnId.add(lblId);
 		jpnId.add(txtId);
 		jpnBotoes.add(btnCadastrar);
