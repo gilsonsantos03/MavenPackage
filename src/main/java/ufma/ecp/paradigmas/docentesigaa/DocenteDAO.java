@@ -1,6 +1,6 @@
-package ufma.ecp.paradigmas.maven_projects;
+package ufma.ecp.paradigmas.docentesigaa;
 
-import java.sql.Connection;  
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,14 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import ufma.ecp.paradigmas.maven_projects.Contato;
-
-public class ContatoDAO {
+public class DocenteDAO {
 	private Connection conn;
 	private PreparedStatement stmt;
-	private String url = "jdbc:mysql://localhost/agenda?user=root&password=1234&useTimezone=true&serverTimezone=UTC";
+	private String url = "jdbc:mysql://localhost/sigaa?user=root&password=1234&useTimezone=true&serverTimezone=UTC";
 	
-	public ContatoDAO(){
+	public DocenteDAO(){
 		try {
 			conn = DriverManager.getConnection(url);
 			System.out.println("Conectado!");
@@ -24,13 +22,13 @@ public class ContatoDAO {
 		}
 	}	
 	
-	public void adicionaContato(Contato c) {
-		String sql = "insert into contato(nome, email, telefone) values (?, ?, ?)";
+	public void adicionaDocente(Docente d) {
+		String sql = "insert into docente(professor, cadeira, id) values (?, ?, ?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, c.getNome());
-			stmt.setString(2, c.getEmail());
-			stmt.setString(3, c.getPhone());
+			stmt.setString(1, d.getProfessor());
+			stmt.setString(2, d.getCadeira());
+			stmt.setInt(3, d.getId());
 			stmt.execute();
 			stmt.close();
 						
@@ -39,16 +37,16 @@ public class ContatoDAO {
 		}
 	}
 	
-	public List<Contato> recuperaContato(){
+	public List<Docente> recuperaDocente(){
 		
 		try {
-			List<Contato> lista = new ArrayList<Contato>();
-			String sql = "select * from contato";
+			List<Docente> lista = new ArrayList<Docente>();
+			String sql = "select * from docente";
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				lista.add(new Contato(rs.getString("nome"), rs.getString("email"), rs.getString("telefone")));
+				lista.add(new Docente(rs.getString("professor"), rs.getString("cadeira"), rs.getInt("id")));
 			}
 			return lista;
 			

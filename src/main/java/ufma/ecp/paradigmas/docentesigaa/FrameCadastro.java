@@ -1,6 +1,6 @@
-package ufma.ecp.paradigmas.maven_projects;
+package ufma.ecp.paradigmas.docentesigaa;
 
-import java.awt.FlowLayout; 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,15 +11,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class JanelaCadastro extends JFrame{
-	/**
-	 * 
-	 */
+public class FrameCadastro extends JFrame{
 	private static final long serialVersionUID = 1L;
-	private JLabel lblNome, lblEmail, lblTelefone;
-	private JTextField txtNome, txtEmail, txtTelefone;
+	private JLabel lblProfessor, lblCadeira, lblId;
+	private JTextField txtProfessor, txtCadeira, txtId;
 	private JButton btnCadastrar, btnLimpar, btnSair;
-	private JPanel jpnNome, jpnEmail, jpnTelefone, jpnBotoes;
+	private JPanel jpnProfessor, jpnCadeira, jpnId, jpnBotoes;
 	
 	private void btnSairActionPerformed() {
 		int confirm = JOptionPane.showConfirmDialog(this,
@@ -39,47 +36,47 @@ public class JanelaCadastro extends JFrame{
 				);
 	}
 	
-	public JanelaCadastro() {
+	public FrameCadastro() {
 		//fazendo a configuracao da janela
-		setTitle("Cadastro de Contatos");
+		setTitle("Cadastro de Docentes");
 		setSize(300, 200);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); //centraliza o JFrame
 		
 		//instanciando ...
-		lblNome = new JLabel("Nome: ");
-		txtNome = new JTextField(15);
-		lblEmail = new JLabel("Email: ");
-		txtEmail = new JTextField(15);
-		lblTelefone = new JLabel("Telefone: ");
-		txtTelefone = new JTextField(15);
+		lblProfessor = new JLabel("Prof: ");
+		txtProfessor = new JTextField(15);
+		lblCadeira = new JLabel("Cadeira: ");
+		txtCadeira = new JTextField(15);
+		lblId = new JLabel("Id: ");
+		txtId = new JTextField(15);
 		btnCadastrar = new JButton("Cadastro");
 		btnLimpar = new JButton("Limpar");
 		btnSair = new JButton("Sair");
-		jpnNome = new JPanel();
-		jpnNome.setLayout(new FlowLayout());
-		jpnEmail = new JPanel();
-		jpnEmail.setLayout(new FlowLayout());
-		jpnTelefone = new JPanel();
-		jpnTelefone.setLayout(new FlowLayout());
+		jpnProfessor = new JPanel();
+		jpnProfessor.setLayout(new FlowLayout());
+		jpnCadeira = new JPanel();
+		jpnCadeira.setLayout(new FlowLayout());
+		jpnId = new JPanel();
+		jpnId.setLayout(new FlowLayout());
 		jpnBotoes = new JPanel();
 		jpnBotoes.setLayout(new FlowLayout());
 		
 		//adicionando os componentes
-		jpnNome.add(lblNome);
-		jpnNome.add(txtNome);
-		jpnEmail.add(lblEmail);
-		jpnEmail.add(txtEmail);
-		jpnTelefone.add(lblTelefone);
-		jpnTelefone.add(txtTelefone);
+		jpnProfessor.add(lblProfessor);
+		jpnProfessor.add(txtProfessor);
+		jpnCadeira.add(lblCadeira);
+		jpnCadeira.add(lblCadeira);
+		jpnId.add(lblId);
+		jpnId.add(txtId);
 		jpnBotoes.add(btnCadastrar);
 		jpnBotoes.add(btnLimpar);
 		jpnBotoes.add(btnSair);
 		
-		add(jpnNome);
-		add(jpnEmail);
-		add(jpnTelefone);
+		add(jpnProfessor);
+		add(jpnCadeira);
+		add(jpnId);
 		add(jpnBotoes);
 		
 		//evento para sair
@@ -92,17 +89,17 @@ public class JanelaCadastro extends JFrame{
 		//evento para limpar
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				txtNome.setText("");
-				txtEmail.setText("");
-				txtTelefone.setText("");
+				txtProfessor.setText("");
+				txtCadeira.setText("");
+				txtId.setText("");
 			}
 		});
 		
 		//evento para cadastrar
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				ContatoDAO contatinho = new ContatoDAO();
-				contatinho.adicionaContato(new Contato(txtNome.getText(), txtEmail.getText(), txtTelefone.getText()));
+				DocenteDAO docente = new DocenteDAO();
+				docente.adicionaDocente(new Docente(txtProfessor.getText(), txtCadeira.getText(), Integer.parseInt(txtId.getText())));
 				btnCadastrarActionPerformed();
 			}
 		});
