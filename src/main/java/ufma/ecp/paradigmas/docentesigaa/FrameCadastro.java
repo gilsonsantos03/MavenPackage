@@ -22,7 +22,7 @@ public class FrameCadastro extends JFrame{
 	
 	private DocenteDAO doc = new DocenteDAO();
 	
-	Font fonte = new Font ("Courier New", Font.BOLD, 20);
+	Font fonte = new Font ("Arial Black", Font.BOLD, 20);
 	
 	private void btnSairActionPerformed() {
 		int confirm = JOptionPane.showConfirmDialog(this,
@@ -61,7 +61,7 @@ public class FrameCadastro extends JFrame{
 	public FrameCadastro() {
 		//fazendo a configuracao da janela
 		setTitle("Cadastro de Docentes");
-		setSize(1100,200);
+		setSize(1400,200);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); //centraliza o JFrame
