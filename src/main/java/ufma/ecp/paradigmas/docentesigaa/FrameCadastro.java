@@ -1,6 +1,7 @@
 package ufma.ecp.paradigmas.docentesigaa;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -18,6 +19,10 @@ public class FrameCadastro extends JFrame{
 	private JTextField txtProfessor, txtCadeira, txtId;
 	private JButton btnCadastrar, btnLimpar, btnSair, btnVisualizar;
 	private JPanel jpnProfessor, jpnCadeira, jpnId, jpnBotoes;
+	
+	private DocenteDAO doc = new DocenteDAO();
+	
+	Font fonte = new Font ("Courier New", Font.BOLD, 20);
 	
 	private void btnSairActionPerformed() {
 		int confirm = JOptionPane.showConfirmDialog(this,
@@ -37,26 +42,32 @@ public class FrameCadastro extends JFrame{
 				);
 	}
 	
-	private List<String> visualizarAux(){
-		
-		
-		return null;
+	private String visualizarAux(){
+		List<Docente> cc = doc.recuperaDocente();
+		String docentes = ""; 
+		for (Docente d : cc) {
+			docentes = docentes + "Professor: " + d.getProfessor() + ", Cadeira: " + d.getCadeira() + ", Id: " + String.valueOf(d.getId() + "\n");
+		}
+		return docentes;
 	}
 	
 	private void btnVisualizarActionPerformed() {
-		
+		JOptionPane.showMessageDialog(null,
+				this.visualizarAux(),
+				"Visualizar Registros",
+				JOptionPane.PLAIN_MESSAGE);
 	}
 	
 	public FrameCadastro() {
 		//fazendo a configuracao da janela
 		setTitle("Cadastro de Docentes");
-		setSize(400,200);
+		setSize(1100,200);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); //centraliza o JFrame
 		
 		//instanciando ...
-		lblProfessor = new JLabel("Prof: ");
+		lblProfessor = new JLabel("Professor: ");
 		txtProfessor = new JTextField(15);
 		
 		lblCadeira = new JLabel("Cadeira: ");
@@ -69,6 +80,18 @@ public class FrameCadastro extends JFrame{
 		btnLimpar = new JButton("Limpar");
 		btnSair = new JButton("Sair");
 		btnVisualizar = new JButton("Visualizar Registros");
+		
+		//mudando a font dos componentes
+		btnCadastrar.setFont(fonte);
+		btnLimpar.setFont(fonte);
+		btnSair.setFont(fonte);
+		btnVisualizar.setFont(fonte);
+		lblProfessor.setFont(fonte);
+		txtProfessor.setFont(fonte);
+		lblCadeira.setFont(fonte);
+		txtCadeira.setFont(fonte);
+		lblId.setFont(fonte);
+		txtId.setFont(fonte);
 		
 		jpnProfessor = new JPanel();
 		jpnCadeira = new JPanel();
@@ -123,16 +146,6 @@ public class FrameCadastro extends JFrame{
 				btnVisualizarActionPerformed();
 			}
 		});
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	}	
 }

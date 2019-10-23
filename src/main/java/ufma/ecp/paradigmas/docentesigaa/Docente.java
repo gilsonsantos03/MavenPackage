@@ -21,6 +21,6 @@ private int id;
 
 	@Override
 	public String toString() {
-		return " Docente(s) [\n Professor: " + this.getProfessor() + ",\n Cadeira: " + this.getCadeira() + ",\n Id: " + this.getId() + "]";
+		return " Docente(s) [Professor: " + this.getProfessor() + ",Cadeira: " + this.getCadeira() + ",Id: " + this.getId() + "]";
 	}
 }
