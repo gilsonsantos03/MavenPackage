@@ -13,6 +13,7 @@ public class DocenteDAO {
 	private PreparedStatement stmt;
 	private String url = "jdbc:mysql://localhost/sigaa?user=root&password=1234&useTimezone=true&serverTimezone=UTC";
 	
+	
 	public DocenteDAO(){
 		try {
 			conn = DriverManager.getConnection(url);

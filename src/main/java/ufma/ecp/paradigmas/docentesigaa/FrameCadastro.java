@@ -3,6 +3,7 @@ package ufma.ecp.paradigmas.docentesigaa;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,7 +16,7 @@ public class FrameCadastro extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JLabel lblProfessor, lblCadeira, lblId;
 	private JTextField txtProfessor, txtCadeira, txtId;
-	private JButton btnCadastrar, btnLimpar, btnSair;
+	private JButton btnCadastrar, btnLimpar, btnSair, btnVisualizar;
 	private JPanel jpnProfessor, jpnCadeira, jpnId, jpnBotoes;
 	
 	private void btnSairActionPerformed() {
@@ -36,10 +37,20 @@ public class FrameCadastro extends JFrame{
 				);
 	}
 	
+	private List<String> visualizarAux(){
+		
+		
+		return null;
+	}
+	
+	private void btnVisualizarActionPerformed() {
+		
+	}
+	
 	public FrameCadastro() {
 		//fazendo a configuracao da janela
 		setTitle("Cadastro de Docentes");
-		setSize(300,200);
+		setSize(400,200);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); //centraliza o JFrame
@@ -57,6 +68,7 @@ public class FrameCadastro extends JFrame{
 		btnCadastrar = new JButton("Cadastro");
 		btnLimpar = new JButton("Limpar");
 		btnSair = new JButton("Sair");
+		btnVisualizar = new JButton("Visualizar Registros");
 		
 		jpnProfessor = new JPanel();
 		jpnCadeira = new JPanel();
@@ -73,6 +85,7 @@ public class FrameCadastro extends JFrame{
 		jpnBotoes.add(btnCadastrar);
 		jpnBotoes.add(btnLimpar);
 		jpnBotoes.add(btnSair);
+		jpnBotoes.add(btnVisualizar);
 		
 		add(jpnProfessor);
 		add(jpnCadeira);
@@ -103,5 +116,23 @@ public class FrameCadastro extends JFrame{
 				btnCadastrarActionPerformed();
 			}
 		});
+		
+		//evento para visualizar registros
+		btnVisualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				btnVisualizarActionPerformed();
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}	
 }
