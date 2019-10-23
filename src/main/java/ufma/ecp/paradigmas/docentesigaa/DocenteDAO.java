@@ -23,6 +23,15 @@ public class DocenteDAO {
 		}
 	}	
 	
+	public void closeConnection () throws SQLException {
+		try {
+			conn.close();
+			System.out.println("Desconectado!");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void adicionaDocente(Docente d) {
 		String sql = "insert into docente(professor, cadeira, id) values (?, ?, ?)";
 		try {

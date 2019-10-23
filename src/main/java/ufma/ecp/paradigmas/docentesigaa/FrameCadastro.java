@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -30,7 +31,13 @@ public class FrameCadastro extends JFrame{
 			"Sair - Contirmação",
 			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if (confirm == JOptionPane.YES_OPTION) {
-			System.exit(1);
+			try {
+				doc.closeConnection();
+				System.exit(1);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 		}	
 	}
 	
@@ -66,7 +73,7 @@ public class FrameCadastro extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); //centraliza o JFrame
 		
-		//instanciando ...
+		//instanciando
 		lblProfessor = new JLabel("Professor: ");
 		txtProfessor = new JTextField(15);
 		
