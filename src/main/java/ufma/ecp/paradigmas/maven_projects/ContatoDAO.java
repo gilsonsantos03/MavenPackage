@@ -25,12 +25,13 @@ public class ContatoDAO {
 	}	
 	
 	public void adicionaContato(Contato c) {
-		String sql = "insert into contato(nome, email, telefone) values (?, ?, ?)";
+		String sql = "insert into contato(nome, email, telefone, grupo) values (?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, c.getNome());
 			stmt.setString(2, c.getEmail());
 			stmt.setString(3, c.getPhone());
+			stmt.setString(4, c.getGrupo());
 			stmt.execute();
 			stmt.close();
 						
@@ -47,7 +48,7 @@ public class ContatoDAO {
 		ResultSet rs = stmt.executeQuery();
 			
 		while (rs.next()) {
-			Contato c = new Contato(rs.getString("nome"),rs.getString("email"), rs.getString("telefone"));
+			Contato c = new Contato(rs.getString("nome"),rs.getString("email"), rs.getString("telefone"), rs.getString("grupo"));
 			lista.add(c);
 		}
 		
@@ -56,11 +57,12 @@ public class ContatoDAO {
 	}
 	
 	public void atualizaContato(Contato c) throws SQLException{
-		String sql = "update contato set nome = ?, telefone = ? where email = ?";
+		String sql = "update contato set nome = ?, telefone = ?, grupo = ? where email = ?";
 		stmt = conn.prepareStatement(sql);
 		stmt.setString(1, c.getNome());
 		stmt.setString(2, c.getPhone());
-		stmt.setString(3, c.getEmail());
+		stmt.setString(3, c.getGrupo());
+		stmt.setString(4, c.getEmail());
 		stmt.execute();
 		stmt.close();
 	}

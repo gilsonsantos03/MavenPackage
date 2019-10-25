@@ -16,10 +16,10 @@ public class JanelaCadastro extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JLabel lblNome, lblEmail, lblTelefone;
-	private JTextField txtNome, txtEmail, txtTelefone;
+	private JLabel lblNome, lblEmail, lblTelefone, lblGrupo;
+	private JTextField txtNome, txtEmail, txtTelefone, txtGrupo;
 	private JButton btnCadastrar, btnLimpar, btnSair;
-	private JPanel jpnNome, jpnEmail, jpnTelefone, jpnBotoes;
+	private JPanel jpnNome, jpnEmail, jpnTelefone, jpnGrupo,jpnBotoes;
 	
 	private void btnSairActionPerformed() {
 		int confirm = JOptionPane.showConfirmDialog(this,
@@ -54,6 +54,8 @@ public class JanelaCadastro extends JFrame{
 		txtEmail = new JTextField(15);
 		lblTelefone = new JLabel("Telefone: ");
 		txtTelefone = new JTextField(15);
+		lblGrupo = new JLabel("Grupo: ");
+		txtGrupo = new JTextField(15);
 		btnCadastrar = new JButton("Cadastro");
 		btnLimpar = new JButton("Limpar");
 		btnSair = new JButton("Sair");
@@ -63,6 +65,8 @@ public class JanelaCadastro extends JFrame{
 		jpnEmail.setLayout(new FlowLayout());
 		jpnTelefone = new JPanel();
 		jpnTelefone.setLayout(new FlowLayout());
+		jpnGrupo = new JPanel();
+		jpnGrupo.setLayout(new FlowLayout());
 		jpnBotoes = new JPanel();
 		jpnBotoes.setLayout(new FlowLayout());
 		
@@ -73,6 +77,8 @@ public class JanelaCadastro extends JFrame{
 		jpnEmail.add(txtEmail);
 		jpnTelefone.add(lblTelefone);
 		jpnTelefone.add(txtTelefone);
+		jpnGrupo.add(lblGrupo);
+		jpnGrupo.add(txtGrupo);
 		jpnBotoes.add(btnCadastrar);
 		jpnBotoes.add(btnLimpar);
 		jpnBotoes.add(btnSair);
@@ -80,6 +86,7 @@ public class JanelaCadastro extends JFrame{
 		add(jpnNome);
 		add(jpnEmail);
 		add(jpnTelefone);
+		add(jpnGrupo);
 		add(jpnBotoes);
 		
 		//evento para sair
@@ -95,6 +102,7 @@ public class JanelaCadastro extends JFrame{
 				txtNome.setText("");
 				txtEmail.setText("");
 				txtTelefone.setText("");
+				txtGrupo.setText("");
 			}
 		});
 		
@@ -102,7 +110,8 @@ public class JanelaCadastro extends JFrame{
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				ContatoDAO contatinho = new ContatoDAO();
-				contatinho.adicionaContato(new Contato(txtNome.getText(), txtEmail.getText(), txtTelefone.getText()));
+				contatinho.adicionaContato(new Contato(txtNome.getText(), txtEmail.getText(), txtTelefone.getText()
+						, txtGrupo.getText()));
 				btnCadastrarActionPerformed();
 			}
 		});

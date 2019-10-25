@@ -23,7 +23,7 @@ public class ContatoTableModel extends AbstractTableModel implements TableModelL
 		try {
 			this.dao = dao;
 			this.contatos = dao.recuperaContato();
-			colunas = Arrays.asList("Nome", "Email", "Telefone");
+			colunas = Arrays.asList("Nome", "Email", "Telefone", "Grupo");
 			this.addTableModelListener(this);
 			this.dao.desconecta();
 			
@@ -49,6 +49,7 @@ public class ContatoTableModel extends AbstractTableModel implements TableModelL
 		case 0: return contato.getNome();
 		case 1: return contato.getEmail();
 		case 2: return contato.getPhone();
+		case 3: return contato.getGrupo();
 		}
 		return null;
 	}
@@ -70,6 +71,9 @@ public class ContatoTableModel extends AbstractTableModel implements TableModelL
 			break;
 		case 2:
 			contato.setPhone((String)aValue);
+			break;
+		case 3:
+			contato.setGrupo((String)aValue);
 			break;
 		default:
 			throw new IndexOutOfBoundsException("columnIndex out of bounds");
