@@ -47,23 +47,17 @@ public class DocenteDAO {
 		}
 	}
 	
-	public List<Docente> recuperaDocente(){
+	public List<Docente> recuperaDocente() throws SQLException{
 		
-		try {
-			List<Docente> lista = new ArrayList<Docente>();
-			String sql = "select * from docente";
-			stmt = conn.prepareStatement(sql);
-			ResultSet rs = stmt.executeQuery();
+		List<Docente> lista = new ArrayList<Docente>();
+		String sql = "select * from docente";
+		stmt = conn.prepareStatement(sql);
+		ResultSet rs = stmt.executeQuery();
 			
-			while(rs.next()) {
-				lista.add(new Docente(rs.getString("professor"), rs.getString("cadeira"), rs.getInt("id")));
-			}
-			return lista;
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		while(rs.next()) {
+			lista.add(new Docente(rs.getString("professor"), rs.getString("cadeira"), rs.getInt("id")));
 		}
-		return null;
+		return lista;
 		
 	
 	}
