@@ -39,23 +39,18 @@ public class ContatoDAO {
 		}
 	}
 	
-	public List<Contato> recuperaContato(){
+	public List<Contato> recuperaContato() throws SQLException{
 		
-			String sql = "select * from contato";
-			List<Contato> lista = new ArrayList<Contato>();
-		
-			try {
-			stmt = conn.prepareStatement(sql);
-			ResultSet rs = stmt.executeQuery();
+		String sql = "select * from contato";
+		List<Contato> lista = new ArrayList<Contato>();
+		stmt = conn.prepareStatement(sql);
+		ResultSet rs = stmt.executeQuery();
 			
-			while(rs.next()) {
-				lista.add(new Contato(rs.getString("nome"), rs.getString("email"), rs.getString("telefone")));
-			}
-			stmt.close();
-		
-		} catch (SQLException e) {
-			e.printStackTrace();
+		while (rs.next()) {
+			Contato c = new Contato(rs.getString("nome"),rs.getString("email"), rs.getString("telefone"));
 		}
+		
+		stmt.close();
 		return lista;
 		
 	
