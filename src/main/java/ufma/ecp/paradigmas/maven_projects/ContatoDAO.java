@@ -41,21 +41,22 @@ public class ContatoDAO {
 	
 	public List<Contato> recuperaContato(){
 		
-		try {
-			List<Contato> lista = new ArrayList<Contato>();
 			String sql = "select * from contato";
+			List<Contato> lista = new ArrayList<Contato>();
+		
+			try {
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
 				lista.add(new Contato(rs.getString("nome"), rs.getString("email"), rs.getString("telefone")));
 			}
-			return lista;
-			
+			stmt.close();
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return lista;
 		
 	
 	}
