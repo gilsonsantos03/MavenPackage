@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ufma.ecp.paradigmas.maven_projects.Contato;
+
 public class DocenteDAO {
 	private Connection conn;
 	private PreparedStatement stmt;
@@ -58,7 +60,15 @@ public class DocenteDAO {
 			lista.add(new Docente(rs.getString("professor"), rs.getString("cadeira"), rs.getInt("id")));
 		}
 		return lista;
-		
+	}
 	
+	public void atualizaDocente(Docente d) throws SQLException{
+		String sql = "update docente set professor = ?, cadeira = ? where id = ?";
+		stmt = conn.prepareStatement(sql);
+		stmt.setString(1, d.getProfessor());
+		stmt.setString(2, d.getCadeira());
+		stmt.setInt(3, d.getId());
+		stmt.execute();
+		stmt.close();
 	}
 }
