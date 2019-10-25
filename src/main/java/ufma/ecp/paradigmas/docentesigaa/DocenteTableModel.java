@@ -9,6 +9,10 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
 public class DocenteTableModel extends AbstractTableModel implements TableModelListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private DocenteDAO dao;
 	private List<String> colunas;
 	private List<Docente> docentes;
@@ -46,11 +50,6 @@ public class DocenteTableModel extends AbstractTableModel implements TableModelL
 		return true;
 	}
 	
-	//faz a JTable associar automaticamente um TableCellRenderer específico para campos booleanos 
-	@Override
-	public Class getColumnClass(int c) {
-		return getValueAt(0,c).getClass(); 
-	}
 	
 	public void setValueAt(Object aValue, int l, int c) {
 		Docente docente = docentes.get(l); //pega o valor referente a linha especificada 

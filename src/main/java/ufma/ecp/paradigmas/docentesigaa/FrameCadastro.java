@@ -2,6 +2,7 @@ package ufma.ecp.paradigmas.docentesigaa;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -49,7 +50,7 @@ public class FrameCadastro extends JFrame{
 				);
 	}
 	
-	private String visualizarAux(){
+	private String visualizarAux() throws SQLException{
 		List<Docente> cc = doc.recuperaDocente();
 		String docentes = ""; 
 		for (Docente d : cc) {
@@ -58,7 +59,7 @@ public class FrameCadastro extends JFrame{
 		return docentes;
 	}
 	
-	private void btnVisualizarActionPerformed() {
+	private void btnVisualizarActionPerformed() throws HeadlessException, SQLException {
 		JOptionPane.showMessageDialog(null,
 				this.visualizarAux(),
 				"Visualizar Registros",
@@ -150,7 +151,13 @@ public class FrameCadastro extends JFrame{
 		//evento para visualizar registros
 		btnVisualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				btnVisualizarActionPerformed();
+				try {
+					btnVisualizarActionPerformed();
+				} catch (HeadlessException e) {
+					e.printStackTrace();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		

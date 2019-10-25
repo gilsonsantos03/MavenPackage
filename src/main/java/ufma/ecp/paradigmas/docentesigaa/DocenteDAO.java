@@ -1,14 +1,12 @@
 package ufma.ecp.paradigmas.docentesigaa;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import ufma.ecp.paradigmas.maven_projects.Contato;
 
 public class DocenteDAO {
 	private Connection conn;
