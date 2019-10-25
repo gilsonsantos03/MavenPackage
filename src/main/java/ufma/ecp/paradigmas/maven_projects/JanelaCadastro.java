@@ -16,10 +16,10 @@ public class JanelaCadastro extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JLabel lblNome, lblEmail, lblTelefone, lblGrupo;
-	private JTextField txtNome, txtEmail, txtTelefone, txtGrupo;
+	private JLabel lblNome, lblEmail, lblTelefone, lblGrupo, lblAtivo;
+	private JTextField txtNome, txtEmail, txtTelefone, txtGrupo, txtAtivo;
 	private JButton btnCadastrar, btnLimpar, btnSair;
-	private JPanel jpnNome, jpnEmail, jpnTelefone, jpnGrupo,jpnBotoes;
+	private JPanel jpnNome, jpnEmail, jpnTelefone, jpnGrupo, jpnAtivo, jpnBotoes;
 	
 	private void btnSairActionPerformed() {
 		int confirm = JOptionPane.showConfirmDialog(this,
@@ -56,6 +56,9 @@ public class JanelaCadastro extends JFrame{
 		txtTelefone = new JTextField(15);
 		lblGrupo = new JLabel("Grupo: ");
 		txtGrupo = new JTextField(15);
+		lblAtivo = new JLabel("Ativo: ");
+		txtAtivo = new JTextField(15);
+			
 		btnCadastrar = new JButton("Cadastro");
 		btnLimpar = new JButton("Limpar");
 		btnSair = new JButton("Sair");
@@ -67,6 +70,9 @@ public class JanelaCadastro extends JFrame{
 		jpnTelefone.setLayout(new FlowLayout());
 		jpnGrupo = new JPanel();
 		jpnGrupo.setLayout(new FlowLayout());
+		jpnAtivo = new JPanel();
+		jpnAtivo.setLayout(new FlowLayout());
+
 		jpnBotoes = new JPanel();
 		jpnBotoes.setLayout(new FlowLayout());
 		
@@ -79,6 +85,8 @@ public class JanelaCadastro extends JFrame{
 		jpnTelefone.add(txtTelefone);
 		jpnGrupo.add(lblGrupo);
 		jpnGrupo.add(txtGrupo);
+		jpnAtivo.add(lblAtivo);
+		jpnAtivo.add(txtAtivo);
 		jpnBotoes.add(btnCadastrar);
 		jpnBotoes.add(btnLimpar);
 		jpnBotoes.add(btnSair);
@@ -87,6 +95,7 @@ public class JanelaCadastro extends JFrame{
 		add(jpnEmail);
 		add(jpnTelefone);
 		add(jpnGrupo);
+		add(jpnAtivo);
 		add(jpnBotoes);
 		
 		//evento para sair
@@ -103,6 +112,7 @@ public class JanelaCadastro extends JFrame{
 				txtEmail.setText("");
 				txtTelefone.setText("");
 				txtGrupo.setText("");
+				txtAtivo.setText("");
 			}
 		});
 		
@@ -111,7 +121,7 @@ public class JanelaCadastro extends JFrame{
 			public void actionPerformed(ActionEvent event) {
 				ContatoDAO contatinho = new ContatoDAO();
 				contatinho.adicionaContato(new Contato(txtNome.getText(), txtEmail.getText(), txtTelefone.getText()
-						, txtGrupo.getText()));
+						, txtGrupo.getText(), Boolean.getBoolean(txtAtivo.getText())));
 				btnCadastrarActionPerformed();
 			}
 		});

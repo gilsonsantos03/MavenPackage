@@ -23,7 +23,7 @@ public class ContatoTableModel extends AbstractTableModel implements TableModelL
 		try {
 			this.dao = dao;
 			this.contatos = dao.recuperaContato();
-			colunas = Arrays.asList("Nome", "Email", "Telefone", "Grupo");
+			colunas = Arrays.asList("Nome", "Email", "Telefone", "Grupo", "Ativo");
 			this.addTableModelListener(this);
 			this.dao.desconecta();
 			
@@ -50,6 +50,7 @@ public class ContatoTableModel extends AbstractTableModel implements TableModelL
 		case 1: return contato.getEmail();
 		case 2: return contato.getPhone();
 		case 3: return contato.getGrupo();
+		case 4: return contato.getAtivo();
 		}
 		return null;
 	}
@@ -57,6 +58,12 @@ public class ContatoTableModel extends AbstractTableModel implements TableModelL
 	@Override
 	public boolean isCellEditable(int l, int c) {
 		return true;
+	}
+	
+	//faz a JTable associar automaticamente um TableCellRenderer específico para campos booleanos 
+	@Override
+	public Class getColumnClass(int c) {
+		return getValueAt(0,c).getClass(); 
 	}
 	
 	public void setValueAt(Object aValue, int l, int c) {
@@ -75,6 +82,9 @@ public class ContatoTableModel extends AbstractTableModel implements TableModelL
 		case 3:
 			contato.setGrupo((String)aValue);
 			break;
+		case 4:
+			contato.setAtivo((Boolean)aValue); //duvida nessa linha
+			break;
 		default:
 			throw new IndexOutOfBoundsException("columnIndex out of bounds");
 		}
@@ -92,6 +102,8 @@ public class ContatoTableModel extends AbstractTableModel implements TableModelL
 		}
 		
 	}
+	
+	
 	
 
 }

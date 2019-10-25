@@ -2,8 +2,6 @@ package ufma.ecp.paradigmas.maven_projects;
 
 import javax.swing.JFrame;
 
-import ufma.ecp.paradigmas.maven_projects.JanelaCadastro;
-
 public class CadastraContato {
 
 	public static void main(String[] args) {
@@ -15,8 +13,8 @@ public class CadastraContato {
 				/*
 				JanelaCadastro j = new JanelaCadastro();
 				j.setVisible(true);
-	
 				*/
+				
 	}
 
 }

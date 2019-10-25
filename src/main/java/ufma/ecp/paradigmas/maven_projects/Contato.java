@@ -2,13 +2,15 @@ package ufma.ecp.paradigmas.maven_projects;
 
 public class Contato {
 private String nome, email, phone, grupo;
+private Boolean ativo;
 	
 	//construtor
-	public Contato(String n, String e, String p, String g) {
+	public Contato(String n, String e, String p, String g, Boolean a) {
 		this.nome = n;
 		this.email = e;
 		this.phone = p;
 		this.grupo = g;
+		this.ativo = a;
 	}
 	
 	//getters and setters
@@ -20,12 +22,14 @@ private String nome, email, phone, grupo;
 	public void setPhone(String phone) {this.phone = phone;}
 	public String getGrupo() {return grupo;}
 	public void setGrupo(String grupo) {this.grupo = grupo;}
+	public Boolean getAtivo() {return ativo;}
+	public void setAtivo(Boolean ativo) {this.ativo = ativo;}
 	
 
 	@Override
 	public String toString() {
 		return " Contato(s) [\n Nome: " + this.getNome() + ",\n Email: " + this.getEmail() + ",\n Telefone: " + this.getPhone() + 
-				",\n Grupo: " + this.getGrupo() + "]";
+				",\n Grupo: " + this.getGrupo() + ",\n Ativo: " + this.getAtivo() +"]";
 	}
 	
 }
