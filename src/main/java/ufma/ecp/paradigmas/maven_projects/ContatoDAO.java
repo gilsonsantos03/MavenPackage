@@ -40,7 +40,7 @@ public class ContatoDAO {
 	}
 	
 	public List<Contato> recuperaContato() throws SQLException{
-		
+	
 		String sql = "select * from contato";
 		List<Contato> lista = new ArrayList<Contato>();
 		stmt = conn.prepareStatement(sql);
@@ -48,11 +48,26 @@ public class ContatoDAO {
 			
 		while (rs.next()) {
 			Contato c = new Contato(rs.getString("nome"),rs.getString("email"), rs.getString("telefone"));
+			lista.add(c);
 		}
 		
 		stmt.close();
 		return lista;
-		
-	
 	}
+	
+	public void atualizaContato(Contato c) throws SQLException{
+		String sql = "update contato set nome = ?, telefone = ? where email = ?";
+		stmt = conn.prepareStatement(sql);
+		stmt.setString(1, c.getNome());
+		stmt.setString(2, c.getPhone());
+		stmt.setString(3, c.getEmail());
+		stmt.execute();
+		stmt.close();
+	}
+	
+	public void desconecta() throws SQLException {
+		stmt.close();
+	}
+	
+	
 }

@@ -6,10 +6,17 @@ import javax.swing.JTable;
 
 public class FrameTable extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public FrameTable() {
-		JTable tm = new JTable(new ContatoTableModel());
-		JScrollPane scroll = new JScrollPane();
-		scroll.setViewportView(tm);
+		super("Contatos");
+		ContatoDAO dao = new ContatoDAO();
+		JTable t = new JTable(new ContatoTableModel(dao));
+		JScrollPane scroll = new JScrollPane(); //para permitir a rolagem
+		scroll.setViewportView(t);
 		add(scroll);
 		setSize(400,300);
 		setLocationRelativeTo(null); //centraliza o JFrame
