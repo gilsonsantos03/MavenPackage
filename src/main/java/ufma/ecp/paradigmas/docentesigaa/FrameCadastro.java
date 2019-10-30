@@ -1,13 +1,11 @@
 package ufma.ecp.paradigmas.docentesigaa;
 
-import java.awt.FlowLayout;
+import java.awt.FlowLayout; 
 import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -50,21 +48,21 @@ public class FrameCadastro extends JFrame{
 				);
 	}
 	
-	private String visualizarAux() throws SQLException{
-		List<Docente> cc = doc.recuperaDocente();
-		String docentes = ""; 
-		for (Docente d : cc) {
-			docentes = docentes + "Professor: " + d.getProfessor() + ", Cadeira: " + d.getCadeira() + ", Id: " + String.valueOf(d.getId() + "\n");
-		}
-		return docentes;
-	}
+//	private String visualizarAux() throws SQLException{
+//		List<Docente> cc = doc.recuperaDocente();
+//		String docentes = ""; 
+//		for (Docente d : cc) {
+//			docentes = docentes + "Professor: " + d.getProfessor() + ", Cadeira: " + d.getCadeira() + ", Id: " + String.valueOf(d.getId() + "\n");
+//		}
+//		return docentes;
+//	}
 	
-	private void btnVisualizarActionPerformed() throws HeadlessException, SQLException {
-		JOptionPane.showMessageDialog(null,
-				this.visualizarAux(),
-				"Visualizar Registros",
-				JOptionPane.PLAIN_MESSAGE);
-	}
+//	private void btnVisualizarActionPerformed() throws HeadlessException, SQLException {
+//		JOptionPane.showMessageDialog(null,
+//				this.visualizarAux(),
+//				"Visualizar Registros",
+//				JOptionPane.PLAIN_MESSAGE);
+//	}
 	
 	public FrameCadastro() {
 		//fazendo a configuracao da janela
@@ -152,7 +150,9 @@ public class FrameCadastro extends JFrame{
 		btnVisualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				try {
-					btnVisualizarActionPerformed();
+					FrameTable frame = new FrameTable();
+					frame.setVisible(true);
+					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				} catch (HeadlessException e) {
 					e.printStackTrace();
 				} catch (SQLException e) {

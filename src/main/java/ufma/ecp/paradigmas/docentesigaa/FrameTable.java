@@ -8,15 +8,20 @@ import javax.swing.JTable;
 
 public class FrameTable extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public FrameTable() throws SQLException{
-	super("Teste");
-	final DocenteDAO dao = new DocenteDAO();
-	JTable t = new JTable(new DocenteTableModel(dao));
-	
-	JScrollPane scroll = new JScrollPane(); //para permitir a rolagem
-	scroll.setViewportView(t);
-	add(scroll);
-	setSize(400,300);
-	setLocationRelativeTo(null); //centraliza o JFrame
+		super("Teste");
+		final DocenteDAO dao = new DocenteDAO();
+		JTable t = new JTable(new DocenteTableModel(dao));
+		
+		JScrollPane scroll = new JScrollPane(); //para permitir a rolagem
+		scroll.setViewportView(t);
+		add(scroll);
+		setSize(400,300);
+		setLocationRelativeTo(null); //centraliza o JFrame
 	}
 }

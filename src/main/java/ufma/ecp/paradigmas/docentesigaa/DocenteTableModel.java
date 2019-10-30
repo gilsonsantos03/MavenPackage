@@ -28,6 +28,10 @@ public class DocenteTableModel extends AbstractTableModel implements TableModelL
 	public int getColumnCount() {
 		return colunas.size();
 	}
+	
+	public String getColumnName(int i) {
+		return colunas.get(i);
+	}
 
 	public int getRowCount() {
 		return docentes.size();
