@@ -10,8 +10,6 @@ public class CadastrarDocente {
 		FrameCadastro j = new FrameCadastro();
 		j.setVisible(true);
 		
-		
-
 	
 	}
 }

@@ -18,7 +18,7 @@ public class FrameTable extends JFrame{
 		final ContatoDAO dao = new ContatoDAO();
 		JTable t = new JTable(new ContatoTableModel(dao));
 		
-		JComboBox cb = new JComboBox();
+		JComboBox<String> cb = new JComboBox<String>();
 		cb.addItem("Familia");
 		cb.addItem("Amigo");
 		cb.addItem("Conhecido");

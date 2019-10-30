@@ -33,12 +33,14 @@ public class ContatoTableModel extends AbstractTableModel implements TableModelL
 	}
 	
 	public int getColumnCount() {
-		
 		return colunas.size();
 	}
 
+	public String getColumnName(int i) {
+		return colunas.get(i);
+	}
+	
 	public int getRowCount() {
-		
 		return contatos.size();
 	}
 
@@ -62,7 +64,7 @@ public class ContatoTableModel extends AbstractTableModel implements TableModelL
 	
 	//faz a JTable associar automaticamente um TableCellRenderer específico para campos booleanos 
 	@Override
-	public Class getColumnClass(int c) {
+	public Class getColumnClass(int c) {  //ele tava dando um warning que era pra parametrizar <? extends Object>
 		return getValueAt(0,c).getClass(); 
 	}
 	

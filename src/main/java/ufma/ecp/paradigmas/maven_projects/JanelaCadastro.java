@@ -1,8 +1,10 @@
 package ufma.ecp.paradigmas.maven_projects;
 
-import java.awt.FlowLayout; 
+import java.awt.FlowLayout;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,7 +20,7 @@ public class JanelaCadastro extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JLabel lblNome, lblEmail, lblTelefone, lblGrupo, lblAtivo;
 	private JTextField txtNome, txtEmail, txtTelefone, txtGrupo, txtAtivo;
-	private JButton btnCadastrar, btnLimpar, btnSair;
+	private JButton btnCadastrar, btnLimpar, btnSair, btnVisu;
 	private JPanel jpnNome, jpnEmail, jpnTelefone, jpnGrupo, jpnAtivo, jpnBotoes;
 	
 	private void btnSairActionPerformed() {
@@ -42,7 +44,7 @@ public class JanelaCadastro extends JFrame{
 	public JanelaCadastro() {
 		//fazendo a configuracao da janela
 		setTitle("Cadastro de Contatos");
-		setSize(300, 200);
+		setSize(1200, 400);
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); //centraliza o JFrame
@@ -50,18 +52,24 @@ public class JanelaCadastro extends JFrame{
 		//instanciando ...
 		lblNome = new JLabel("Nome: ");
 		txtNome = new JTextField(15);
+		
 		lblEmail = new JLabel("Email: ");
 		txtEmail = new JTextField(15);
+		
 		lblTelefone = new JLabel("Telefone: ");
 		txtTelefone = new JTextField(15);
+		
 		lblGrupo = new JLabel("Grupo: ");
 		txtGrupo = new JTextField(15);
+		
 		lblAtivo = new JLabel("Ativo: ");
 		txtAtivo = new JTextField(15);
 			
 		btnCadastrar = new JButton("Cadastro");
 		btnLimpar = new JButton("Limpar");
 		btnSair = new JButton("Sair");
+		btnVisu = new JButton("Visualizar Registros");
+		
 		jpnNome = new JPanel();
 		jpnNome.setLayout(new FlowLayout());
 		jpnEmail = new JPanel();
@@ -90,6 +98,7 @@ public class JanelaCadastro extends JFrame{
 		jpnBotoes.add(btnCadastrar);
 		jpnBotoes.add(btnLimpar);
 		jpnBotoes.add(btnSair);
+		jpnBotoes.add(btnVisu);
 		
 		add(jpnNome);
 		add(jpnEmail);
@@ -123,6 +132,19 @@ public class JanelaCadastro extends JFrame{
 				contatinho.adicionaContato(new Contato(txtNome.getText(), txtEmail.getText(), txtTelefone.getText()
 						, txtGrupo.getText(), Boolean.getBoolean(txtAtivo.getText())));
 				btnCadastrarActionPerformed();
+			}
+		});
+		
+		//evento para visualizar registros
+		btnVisu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				try {
+					FrameTable f = new FrameTable();
+					f.setVisible(true);
+					f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				} catch (HeadlessException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}	
