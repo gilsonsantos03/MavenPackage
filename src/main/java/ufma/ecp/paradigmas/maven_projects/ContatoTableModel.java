@@ -64,7 +64,7 @@ public class ContatoTableModel extends AbstractTableModel implements TableModelL
 	
 	//faz a JTable associar automaticamente um TableCellRenderer específico para campos booleanos 
 	@Override
-	public Class getColumnClass(int c) {  //ele tava dando um warning que era pra parametrizar <? extends Object>
+	public Class<? extends Object> getColumnClass(int c) {  //ele tava dando um warning que era pra parametrizar <? extends Object>
 		return getValueAt(0,c).getClass(); 
 	}
 	
