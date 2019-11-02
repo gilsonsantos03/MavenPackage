@@ -12,9 +12,9 @@ public class Docente {
 	private int id;
 	
 	//construtor
-	public Docente(String n, String e, int p) {
+	public Docente(String n, String c, int p) {
 		this.professor = n;
-		this.cadeira = e;
+		this.cadeira = c;
 		this.id = p;
 	}
 	

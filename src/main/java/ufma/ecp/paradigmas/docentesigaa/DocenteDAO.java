@@ -1,6 +1,7 @@
 package ufma.ecp.paradigmas.docentesigaa;
 
 import java.sql.Connection; 
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import java.util.List;
 public class DocenteDAO {
 	private Connection conn;
 	private PreparedStatement stmt;
-	private String url = "jdbc:mysql://localhost/sigaa?user=root&password=1234&useTimezone=true&serverTimezone=UTC";
+	private final String url = "jdbc:mysql://localhost/sigaa?user=root&password=1234&useTimezone=true&serverTimezone=UTC";
 	
 	
 	public DocenteDAO(){

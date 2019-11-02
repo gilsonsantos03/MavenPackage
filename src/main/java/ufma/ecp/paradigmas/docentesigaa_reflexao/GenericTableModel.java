@@ -46,7 +46,7 @@ public class GenericTableModel<T> extends AbstractTableModel{
 			}
 		}
 		return null;
-	}
+	}				
 
 	public int getRowCount() {
 		return dados.size();

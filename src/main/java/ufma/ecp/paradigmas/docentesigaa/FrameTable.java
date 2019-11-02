@@ -2,9 +2,14 @@ package ufma.ecp.paradigmas.docentesigaa;
 
 import java.sql.SQLException;
 
+
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import ufma.ecp.paradigmas.docentesigaa_reflexao.GenericTableModel;
+import ufma.ecp.paradigmas.docentesigaa_reflexao.ReflexaoDocenteDAO;
+
 
 public class FrameTable extends JFrame{
 	
@@ -14,9 +19,10 @@ public class FrameTable extends JFrame{
 	private static final long serialVersionUID = 1L;
 
 	public FrameTable() throws SQLException{
-		super("Teste");
+		super("Docente");
 		final DocenteDAO dao = new DocenteDAO();
-		JTable t = new JTable(new DocenteTableModel(dao));
+		
+		JTable t = new JTable(new GenericTableModel<Docente>(new ReflexaoDocenteDAO()));
 		
 		JScrollPane scroll = new JScrollPane(); //para permitir a rolagem
 		scroll.setViewportView(t);
