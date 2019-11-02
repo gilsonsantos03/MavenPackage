@@ -1,8 +1,15 @@
 package ufma.ecp.paradigmas.docentesigaa;
 
+import ufma.ecp.paradigmas.docentesigaa_reflexao.ColunaAnnotation;
+
 public class Docente {
-private String professor, cadeira;
-private int id;
+	
+	@ColunaAnnotation(nome = "Professor", posicao = 0)
+	private String professor;
+	@ColunaAnnotation(nome = "Cadeira", posicao = 1)
+	private String cadeira;
+	@ColunaAnnotation(nome = "Id", posicao = 2)
+	private int id;
 	
 	//construtor
 	public Docente(String n, String e, int p) {
