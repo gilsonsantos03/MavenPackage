@@ -7,8 +7,8 @@ public class CadastrarDocente {
 
 	public static void main(String[] args) throws SQLException {
 		
-		FrameCadastro j = new FrameCadastro();
-		j.setVisible(true);
+		FrameCadastro d = new FrameCadastro();
+		d.setVisible(true);
 		
 	
 	}

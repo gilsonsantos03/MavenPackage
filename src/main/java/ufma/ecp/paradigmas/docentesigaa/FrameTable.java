@@ -20,7 +20,7 @@ public class FrameTable extends JFrame{
 
 	public FrameTable() throws SQLException{
 		super("Docente");
-		final DocenteDAO dao = new DocenteDAO();
+		//final DocenteDAO dao = new DocenteDAO();
 		
 		JTable t = new JTable(new GenericTableModel<Docente>(new ReflexaoDocenteDAO()));
 		
